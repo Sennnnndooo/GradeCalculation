@@ -1,103 +1,201 @@
-﻿namespace GradeCalculation
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Xml.Serialization;
+using BusinessDataLogicAppservice;
+
+public class GradeComputation
+
+
 {
-    internal class Program
+    public static string useradmin,passadmin,choice;
+    
+
+    static void inputgrade()
     {
-        static void Main(string[] args)
+        bdl gradeLogic = new bdl();
+
+        Console.WriteLine("Quizzes:");
+        Console.Write("1(10): "); 
+        double quiz1 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("2(10): ");
+        double quiz2 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("3(10): ");
+        double quiz3 = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Long quizzes:");
+        Console.Write("1(20): ");
+        double lngquiz1 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("2(30): ");
+        double lngquiz2 = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Project:");
+        Console.Write("1(50): ");
+        double project = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Performance Task:");
+        Console.Write("1(50): ");
+        double performtask = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Midterms:");
+        Console.Write("1(50): "); 
+        double midterms = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Finals:");
+        Console.Write("1(50): "); 
+        double finals = Convert.ToDouble(Console.ReadLine());
+
+     
+        var result = gradeLogic.ComputeGrade(quiz1, quiz2, quiz3, lngquiz1, lngquiz2,project, performtask, midterms, finals);
+
+        
+        Console.WriteLine("Quiz 1 Grade: " + (result.FinalQuiz1 * 100));
+        Console.WriteLine("Quiz 2 Grade: " + (result.FinalQuiz2 * 100));
+        Console.WriteLine("Quiz 3 Grade: " + (result.FinalQuiz3 * 100));
+        Console.WriteLine("Long Quiz 1 Grade: " + (result.FinalLongQuiz1 * 100));
+        Console.WriteLine("Long Quiz 2 Grade: " + (result.FinalLongQuiz2 * 100));
+        Console.WriteLine("Project Grade: " + (result.FinalProject * 100));
+        Console.WriteLine("Performance Task Grade: " + (result.FinalPerform * 100));
+        Console.WriteLine("Midterm Grade: " + (result.FinalMid * 100));
+        Console.WriteLine("Final Exam Grade: " + (result.FinalFinals * 100));
+        Console.WriteLine("Final Grade: " + result.TotalGrade);
+
+
+    }
+    static void UI1() {
+
+        Console.WriteLine("-------Grade Computation------");
+        Console.WriteLine("1.ADD STUDENT");
+        Console.WriteLine("2.INPUT GRADE");
+        Console.WriteLine("3.UPDATE / CHANGE GRADE");
+        Console.WriteLine("4.REVIEW GRADE");
+        Console.WriteLine("5.DELETE GRADE");
+        Console.WriteLine("Enter your Choice:");
+        int choice = Convert.ToInt32(Console.ReadLine());
+        switch (choice)
         {
-            Console.WriteLine("Grade Computation ");
-            Console.WriteLine("Student Name:");
-            string studentname = Console.ReadLine();
-            Console.WriteLine("Year & Course:");
-            var yearandcourse = Console.ReadLine();
 
-            Console.WriteLine("First Sem Or Second Sem:");
-            string Semester = Console.ReadLine();
-            for (int i = 0; i < 1; i++)
+            case 1:
+                List<string> usernames = new List<string>();
+                Console.WriteLine("Enter A Student Name:");
+                string studentname = Console.ReadLine();
+                usernames.Add(studentname);
+
+                break;
+
+            case 2:
+                inputgrade();
+                
+
+                break;
+ 
+        }
+ 
+
+    }
+
+
+    static void Loginadmin()
+    {
+        
+            Console.WriteLine("-------Grade Computation------");
+            Console.WriteLine("Enter Admin:");
+            string inputadmin = Console.ReadLine();
+            Console.WriteLine("Enter Password Admin:");
+            string inputpass = Console.ReadLine();
+
+            if (inputadmin == useradmin && inputpass == passadmin)
             {
-                Console.WriteLine("Attendance:(25 MEETINGS)");
-                int Attendance = Convert.ToInt32(Console.ReadLine());
+                UI1();
 
-                if (Attendance > 22)
+            }
+            else
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.WriteLine("Try Again");
+                Console.WriteLine("Would you like to go back to menu?(Yes or no)");
+                choice = Console.ReadLine();
+                if (choice.Equals("yes", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("Drop Student ");
+                    Menu();
+
+                }
+                else if (choice.Equals("no", StringComparison.OrdinalIgnoreCase))
+                {
+                    Loginadmin();
+                }
+                else {
+
+                    Console.WriteLine("Thank you for using!!");
                     break;
-                }
-                else
-                {
-
-
-                    //40
-
-                    double quizscore1 = 10, quizscore2 = 10, quizscore3 = 10, hundredpercent = 100, lngquizscore1 = 20, lngquizscore2 = 30, project1 = 50, perform1 = 50, midterms1 = 50, finals1 = 50;
-                    
-                  
-                    
-                    Console.WriteLine("Quizzes:");
-                    Console.WriteLine("1(10):");
-                    int quiz1 = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("2(10):");
-                    int quiz2 = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("3(10):");
-                    int quiz3 = Convert.ToInt32(Console.ReadLine());
-
-                      double quizpercent1  = quiz1 / quizscore1;
-                     double quizpercent2 = quiz2 / quizscore2;
-                     double quizpercent3 = quiz3 / quizscore3;
-
-                     double resquiz1 = quizpercent1 * hundredpercent;
-                    double resquiz2 = quizpercent2 * hundredpercent;
-                     double resquiz3 =quizpercent3 * hundredpercent;
-
-
-                    Console.WriteLine("Long quizzes:");
-                    Console.WriteLine("1(20):");
-                    int lngquiz1 = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("2(30):");
-                    int lngquiz2 = Convert.ToInt32(Console.ReadLine());
-
-                    double percentlngquiz1 = lngquiz1 / lngquizscore1;
-                    double percentlngquiz2 = lngquiz2 / lngquizscore2;
-
-                    double lngquizres1 = percentlngquiz1 * hundredpercent;
-                    double lngquizres2 = percentlngquiz2 * hundredpercent;
-
-                    //40
-                    Console.WriteLine("Project:");
-                    Console.WriteLine("1(50):");
-                    int project = Convert.ToInt32(Console.ReadLine());
-
-                    double percentproj = project / project1;
-
-                    double resproj = percentproj * hundredpercent;
-
-                    Console.WriteLine("Performance Task:");
-                    Console.WriteLine("1(50):");
-                    int performtask = Convert.ToInt32(Console.ReadLine());
-
-                    double percentperform = performtask / perform1;
-
-                    double respertask = percentperform * hundredpercent;
-
-                    //20
-                    Console.WriteLine("Midterms:");
-                    Console.WriteLine("1(50):");
-                    int midterms = Convert.ToInt32(Console.ReadLine());
-
-                    double percentmid = midterms  / midterms1;
-
-                    double resmid = percentmid * hundredpercent;
-
-                    Console.WriteLine("Finals:");
-                    Console.WriteLine("1(50):");
-                    int finals = Convert.ToInt32(Console.ReadLine());
-
-                    double percentfinals = finals / finals1;
-                    double resfinals = percentfinals * hundredpercent;
-
 
                 }
+
             }
 
+            }
+        
+    }
+
+    static void Createadmin() {
+
+        Console.WriteLine("-------Grade Computation-------");
+        Console.WriteLine("Create an Username Admin:");
+         useradmin = Console.ReadLine();
+        Console.WriteLine("Create an Password Admin:");
+         passadmin = Console.ReadLine();
+        while (true)
+        {
+            Console.WriteLine("Do you want to go back to Menu?(Yes or No)");
+             choice = Console.ReadLine();
+
+            if (choice.Equals("yes",StringComparison.OrdinalIgnoreCase))
+            {
+                Menu();
+                break;
+                
+            }
+            else if (choice.Equals("no", StringComparison.OrdinalIgnoreCase))
+            {
+                Createadmin();
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.Please type (Yes Or No)");
+
+            }
         }
+    }
+
+
+    static void Menu() {
+        Console.WriteLine("-------Grade Computation-------");
+        Console.WriteLine("1.Login Admin");
+        Console.WriteLine("2.Create Admin");
+        Console.WriteLine("3.Exit");
+        Console.WriteLine("Enter your Choice:");
+        int login = Convert.ToInt32(Console.ReadLine());
+        switch (login)
+        {
+            case 1:        
+                Loginadmin();
+
+                break;
+            case 2:
+                Createadmin();
+                break;
+
+            case 3:
+                break;
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+
+        Menu();
+
     }
 }
