@@ -79,23 +79,29 @@ public class GradeComputation
 
         storages.adding(grade);
         Console.WriteLine("The Grade has been add.");
-       
-        compute.listing = grade;
-        double final = compute.ComputeGrade(grade);
+
+ 
+        int i = 0;
+        while (i !> 1)
+                {
+            Console.WriteLine("1.Continue");
+            Console.WriteLine("2.Exit");
+            int pick = Convert.ToInt32(Console.ReadLine());
+
+            switch (pick)
+            {
+                case 1:
+                    UI1();
+                    break;
+
+                case 2:
+                   
+                    break;
 
 
-        Console.WriteLine("Final Grade:" +  final.ToString("F2"));
-       
-        //Console.WriteLine("Quiz 1 Grade: " + (result.FinalQuiz1 * 100));
-        //Console.WriteLine("Quiz 2 Grade: " + (result.FinalQuiz2 * 100));
-        //Console.WriteLine("Quiz 3 Grade: " + (result.FinalQuiz3 * 100));
-        //Console.WriteLine("Long Quiz 1 Grade: " + (result.FinalLongQuiz1 * 100));
-        //Console.WriteLine("Long Quiz 2 Grade: " + (result.FinalLongQuiz2 * 100));
-        //Console.WriteLine("Project Grade: " + (result.FinalProject * 100));
-        //Console.WriteLine("Performance Task Grade: " + (result.FinalPerform * 100));
-        //Console.WriteLine("Midterm Grade: " + (result.FinalMid * 100));
-        //Console.WriteLine("Final Exam Grade: " + (result.FinalFinals * 100));
-        //Console.WriteLine("Final Grade: " + result.TotalGrade);
+            }
+        }     
+        
 
     }
     //
@@ -103,9 +109,22 @@ public class GradeComputation
         Console.WriteLine("Enter a Name:");
         students.Add(Console.ReadLine());
     }
-    //
-    static void reviewgrade() {
     
+
+    static void reviewgrade() {
+        Console.WriteLine("Quiz 1: Grade:" + (compute.FinalQuiz1 * 100));
+        Console.WriteLine("Quiz 2: Grade:" + (compute.FinalQuiz2 * 100));
+        Console.WriteLine("Quiz 3: Grade:" + (compute.FinalQuiz3 * 100));
+        Console.WriteLine("Long Quiz 1: Grade:" + (compute.FinalLongQuiz1 * 100));
+        Console.WriteLine("Long Quiz 2: Grade:" + (compute.FinalLongQuiz2 * 100));
+        Console.WriteLine("Project Grade: Grade:" + (compute.FinalProject * 100));
+        Console.WriteLine("Performance Task: Grade:" + (compute.FinalPerform * 100));
+        Console.WriteLine("Midterm: Grade:" + (compute.FinalMid * 100));
+        Console.WriteLine("Finals: Grade:" + (compute.FinalFinals * 100));
+       
+        compute.listing = grade;
+        double final = compute.ComputeGrade(grade);
+        Console.WriteLine("Final Grade:" + final.ToString("F2"));
     }
     static void deletegrade() {
       
