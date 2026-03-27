@@ -17,8 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BussinessDataLogic\BussinessDataLogic.csproj" />
-    <ProjectReference Include="..\DataModel\DataModel.csproj" />
+    <ProjectReference Include="..\BusinessDataLogicLyr\BusinessDataLogicLyr.csproj" />
+    <ProjectReference Include="..\DataLgcLyr\DataLgcLyr.csproj" />
+    <ProjectReference Include="..\DataMdlLyr\DataMdlLyr.csproj" />
   </ItemGroup>
 
 </Project>

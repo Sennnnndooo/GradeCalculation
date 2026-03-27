@@ -1,7 +1,8 @@
 ﻿
-using BusinessDataLogicAppservice;
-using DataModel;
-using DataLogicDataService;
+using DataMdlLyr;
+using DataLgcLyr;
+using BusinessDataLogicLyr;
+
 using System;
 using System.ComponentModel;
 using System.ComponentModel.Design;
