@@ -83,9 +83,6 @@ public class GradeComputation
         double final = compute.ComputeGrade(grade);
 
 
-
-
-
         Console.WriteLine("Final Grade:" +  final.ToString("F2"));
        
         //Console.WriteLine("Quiz 1 Grade: " + (result.FinalQuiz1 * 100));
@@ -101,8 +98,8 @@ public class GradeComputation
 
     }
     static void updategrade() {
-       
-
+        Console.WriteLine("Enter a Name:");
+        students.Add(Console.ReadLine());
     }
 
     static void reviewgrade() {
