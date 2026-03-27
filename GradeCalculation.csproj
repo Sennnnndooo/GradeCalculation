@@ -8,7 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessDataLogicAppservice\BusinessDataLogicAppservice.csproj" />
+    <Compile Remove="BusinessDataLogicAppservice\**" />
+    <Compile Remove="DataLogicDataService\**" />
+    <EmbeddedResource Remove="BusinessDataLogicAppservice\**" />
+    <EmbeddedResource Remove="DataLogicDataService\**" />
+    <None Remove="BusinessDataLogicAppservice\**" />
+    <None Remove="DataLogicDataService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BussinessDataLogic\BussinessDataLogic.csproj" />
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
 </Project>

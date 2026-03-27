@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.3.11520.95 d18.3
+VisualStudioVersion = 18.3.11520.95
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeCalculation", "GradeCalculation.csproj", "{B90B6BEE-DDB7-4BB2-9625-F023A56DB6A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessDataLogicAppservice", "..\BusinessDataLogicAppservice\BusinessDataLogicAppservice.csproj", "{4C38F2F8-D56E-45C5-9061-EFCBE7EBBDDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "..\DataModel\DataModel.csproj", "{FE81BFED-6D21-4986-BFA9-3C3A6632C7A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLogicDataService", "..\DataLogicDataService\DataLogicDataService.csproj", "{71CAE666-A7C8-41FC-AA41-077300768309}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessDataLogic", "..\BussinessDataLogic\BussinessDataLogic.csproj", "{55BC7F07-B349-4BD3-9023-9C5A1215D5B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLogic", "..\DataLogic\DataLogic.csproj", "{1368AFF3-BBA3-48FD-BE62-54088C9D58DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{B90B6BEE-DDB7-4BB2-9625-F023A56DB6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B90B6BEE-DDB7-4BB2-9625-F023A56DB6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B90B6BEE-DDB7-4BB2-9625-F023A56DB6A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C38F2F8-D56E-45C5-9061-EFCBE7EBBDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C38F2F8-D56E-45C5-9061-EFCBE7EBBDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C38F2F8-D56E-45C5-9061-EFCBE7EBBDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C38F2F8-D56E-45C5-9061-EFCBE7EBBDDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71CAE666-A7C8-41FC-AA41-077300768309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71CAE666-A7C8-41FC-AA41-077300768309}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71CAE666-A7C8-41FC-AA41-077300768309}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71CAE666-A7C8-41FC-AA41-077300768309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE81BFED-6D21-4986-BFA9-3C3A6632C7A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE81BFED-6D21-4986-BFA9-3C3A6632C7A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE81BFED-6D21-4986-BFA9-3C3A6632C7A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE81BFED-6D21-4986-BFA9-3C3A6632C7A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BC7F07-B349-4BD3-9023-9C5A1215D5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BC7F07-B349-4BD3-9023-9C5A1215D5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BC7F07-B349-4BD3-9023-9C5A1215D5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BC7F07-B349-4BD3-9023-9C5A1215D5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1368AFF3-BBA3-48FD-BE62-54088C9D58DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1368AFF3-BBA3-48FD-BE62-54088C9D58DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1368AFF3-BBA3-48FD-BE62-54088C9D58DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1368AFF3-BBA3-48FD-BE62-54088C9D58DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
