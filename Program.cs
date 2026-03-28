@@ -1,8 +1,7 @@
 ﻿
-using DataMdlLyr;
-using DataLgcLyr;
-using BusinessDataLogicLyr;
-
+using GradeCalculationBusinessDataLogic;
+using GradeCalculationDataLogicLayer;
+using GradeCalculationDataModel;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -10,10 +9,10 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 public class GradeComputation
-
 
 {
     static dm grade = new dm();
@@ -21,10 +20,13 @@ public class GradeComputation
     static dl storages = new dl();
     static List<string> students = new List<string>();
 
-
     static void inputgrade()
     {
- 
+        Console.WriteLine("Enter a Name:");
+        string name = Console.ReadLine();
+
+        students.Add(name);
+
         bdl gradeLogic = new bdl();
         List<double> grades = new List<double>();
         //0
@@ -61,9 +63,9 @@ public class GradeComputation
         Console.Write("1(50): ");
         grades.Add(Convert.ToDouble(Console.ReadLine()));
 
-        dm grade = new dm
+        dm grade = new dm()
         {
-
+            StudentName = name,
             Quiz1 = grades[0],
             Quiz2 = grades[1],
             Quiz3 = grades[2],
@@ -81,23 +83,33 @@ public class GradeComputation
         Console.WriteLine("The Grade has been add.");
 
  
-        int i = 0;
-        while (i !> 1)
+        
+        while (true)
                 {
-            Console.WriteLine("1.Continue");
-            Console.WriteLine("2.Exit");
+            Console.WriteLine("1.Input Grade");
+            Console.WriteLine("2.Update Grade");
+            Console.WriteLine("3.Review Grade");
+            Console.WriteLine("4.Delete Grade");
+            Console.WriteLine("5.Exit");
             int pick = Convert.ToInt32(Console.ReadLine());
 
             switch (pick)
             {
                 case 1:
+                    inputgrade();
+                    break;
+                case 2:
+                    updategrade();
+                    break;
+                case 3:
+                    reviewgrade();
+                    break;
+                case 4:
+                    deletegrade();
+                    break;
+                case 5:
                     UI1();
                     break;
-
-                case 2:
-                   
-                    break;
-
 
             }
         }     
@@ -112,22 +124,63 @@ public class GradeComputation
     
 
     static void reviewgrade() {
-        Console.WriteLine("Quiz 1: Grade:" + (compute.FinalQuiz1 * 100));
-        Console.WriteLine("Quiz 2: Grade:" + (compute.FinalQuiz2 * 100));
-        Console.WriteLine("Quiz 3: Grade:" + (compute.FinalQuiz3 * 100));
-        Console.WriteLine("Long Quiz 1: Grade:" + (compute.FinalLongQuiz1 * 100));
-        Console.WriteLine("Long Quiz 2: Grade:" + (compute.FinalLongQuiz2 * 100));
-        Console.WriteLine("Project Grade: Grade:" + (compute.FinalProject * 100));
-        Console.WriteLine("Performance Task: Grade:" + (compute.FinalPerform * 100));
-        Console.WriteLine("Midterm: Grade:" + (compute.FinalMid * 100));
-        Console.WriteLine("Finals: Grade:" + (compute.FinalFinals * 100));
-       
-        compute.listing = grade;
-        double final = compute.ComputeGrade(grade);
-        Console.WriteLine("Final Grade:" + final.ToString("F2"));
+        Console.WriteLine("Enter a Name to search:");
+        string name = Console.ReadLine();
+        dm grade = storages.GetGrade(name);
+        var Students = storages.GetInfo();
+        var existingname = Students.FirstOrDefault(checker => checker.StudentName == name);
+        bool existnames = false;
+
+        if (grade == null)
+        {
+            Console.WriteLine("Student not found.");
+            
+        }
+        else
+        {
+            if (existingname != null)
+            {
+
+                compute.listing = grade;
+                double final = compute.ComputeGrade(grade);
+
+                List<double> converter = new List<double>();
+                
+                converter.Add(compute.PercentQuiz1);
+                 converter.Add(compute.PercentQuiz2);
+                converter.Add(compute.PercentQuiz3);
+                converter.Add(compute.PercentLongQuiz1);
+                converter.Add(compute.PercentLongQuiz2);
+                converter.Add(compute.PercentProject);
+                converter.Add(compute.PercentPerform);
+                converter.Add(compute.PercentMid);
+                converter.Add(compute.PercentFinals);
+              
+               
+
+                Console.WriteLine("Name:" + (existingname.StudentName));
+                Console.WriteLine("Quiz 1: Grade:" + converter[0].ToString("F2"));
+                Console.WriteLine("Quiz 2: Grade:" + converter[1].ToString("F2"));
+                Console.WriteLine("Quiz 3: Grade:" + converter[2].ToString("F2"));
+                Console.WriteLine("Long Quiz 1: Grade:" + converter[3].ToString("F2"));
+                Console.WriteLine("Long Quiz 2: Grade:" + converter[4].ToString("F2"));
+                Console.WriteLine("Project Grade: Grade:" + converter[5].ToString("F2"));
+                Console.WriteLine("Performance Task: Grade:" + converter[6].ToString("F2"));
+                Console.WriteLine("Midterm: Grade:" + converter[7].ToString("F2"));
+                Console.WriteLine("Finals: Grade:" + converter[8].ToString("F2"));
+                Console.WriteLine("Final Grade:" + final.ToString("F2"));
+                existnames = true;
+                return;
+            }
+            
+        }
     }
+
+  
     static void deletegrade() {
       
+
+
     }
     static void UI1() {
 
@@ -136,7 +189,8 @@ public class GradeComputation
         Console.WriteLine("2.UPDATE / CHANGE GRADE");
         Console.WriteLine("3.REVIEW GRADE");
         Console.WriteLine("4.DELETE GRADE");
-       
+        Console.WriteLine("5.Exit");
+     
         Console.WriteLine("Enter your Choice:");
         int choice = Convert.ToInt32(Console.ReadLine());
         switch (choice)
@@ -145,7 +199,6 @@ public class GradeComputation
             case 1:
                 inputgrade();
                 break;
-
             case 2:
                 updategrade();
                 break;
@@ -155,6 +208,12 @@ public class GradeComputation
             case 4:
                 deletegrade();
                 break;
+            case 5:
+
+                Console.WriteLine("Thank you for using the app");
+                return;
+              
+          
         }
 
 
