@@ -1,6 +1,6 @@
 ﻿namespace GradeCalculationDataModel
 {
-    public class dm
+    public class StudentGrade
     {
         public string StudentName { get; set; } = string.Empty;
         public double Quiz1 { get; set; }

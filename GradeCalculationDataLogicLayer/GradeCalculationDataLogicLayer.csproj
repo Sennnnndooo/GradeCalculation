@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GradeCalculationDataModel\GradeCalculationDataModel.csproj" />
+    <ProjectReference Include="..\GradeDataModel\GradeDataModel.csproj" />
   </ItemGroup>
 
 </Project>

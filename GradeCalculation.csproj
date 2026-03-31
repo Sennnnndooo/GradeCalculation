@@ -13,22 +13,24 @@
     <Compile Remove="GradeCalculationBusinessDataLogic\**" />
     <Compile Remove="GradeCalculationDataLogicLayer\**" />
     <Compile Remove="GradeCalculationDataModel\**" />
+    <Compile Remove="GradeDataModel\**" />
     <EmbeddedResource Remove="BusinessDataLogicAppservice\**" />
     <EmbeddedResource Remove="DataLogicDataService\**" />
     <EmbeddedResource Remove="GradeCalculationBusinessDataLogic\**" />
     <EmbeddedResource Remove="GradeCalculationDataLogicLayer\**" />
     <EmbeddedResource Remove="GradeCalculationDataModel\**" />
+    <EmbeddedResource Remove="GradeDataModel\**" />
     <None Remove="BusinessDataLogicAppservice\**" />
     <None Remove="DataLogicDataService\**" />
     <None Remove="GradeCalculationBusinessDataLogic\**" />
     <None Remove="GradeCalculationDataLogicLayer\**" />
     <None Remove="GradeCalculationDataModel\**" />
+    <None Remove="GradeDataModel\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="GradeCalculationBusinessDataLogic\GradeCalculationBusinessDataLogic.csproj" />
-    <ProjectReference Include="GradeCalculationDataLogicLayer\GradeCalculationDataLogicLayer.csproj" />
-    <ProjectReference Include="GradeCalculationDataModel\GradeCalculationDataModel.csproj" />
+    <ProjectReference Include="GradeDataModel\GradeDataModel.csproj" />
   </ItemGroup>
 
 </Project>
