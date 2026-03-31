@@ -1,6 +1,7 @@
 ﻿    using GradeCalculationDataLogicLayer;
     using GradeCalculationDataModel;
 using GradeCalculationBusinessDataLogic;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ public class GradeComputation
 
 {
     static List<string> students = new List<string>();
-    static GradeCalculationIni repo = new StudentJson();
+    static GradeCalculationIni repo = new GradeDataBase();
     static GradeCalculationBusinessDataLogic.GradeService compute = new GradeCalculationBusinessDataLogic.GradeService(repo);
     public static void Main(string[] args)
     {
@@ -85,40 +86,40 @@ public class GradeComputation
         }
         students.Add(name);
 
-        List<double> grades = new List<double>();
+        List<decimal> grades = new List<decimal>();
         //0
         Console.WriteLine("Quizzes:");
         Console.Write("1(10): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //1
         Console.Write("2(10): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //2
         Console.Write("3(10): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //3
         Console.WriteLine("Long quizzes:");
         Console.Write("1(20): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //4
         Console.Write("2(30): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //5
         Console.WriteLine("Project:");
         Console.Write("1(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //6
         Console.WriteLine("Performance Task:");
         Console.Write("1(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //7
         Console.WriteLine("Midterms:");
         Console.Write("1(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
         //8
         Console.WriteLine("Finals:");
         Console.Write("1(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         StudentGrade grade = new StudentGrade()
         {
@@ -156,12 +157,12 @@ public class GradeComputation
             return;
         }
 
-       
 
-        double final = compute.ComputeGrade(existingname);
+
+        decimal final = compute.ComputeGrade(existingname);
         existingname.TotalGrade = final;
 
-        List<double> converter = new List<double>();
+        List<decimal> converter = new List<decimal>();
 
         converter.Add(compute.PercentQuiz1);
         converter.Add(compute.PercentQuiz2);
@@ -193,36 +194,36 @@ public class GradeComputation
         Console.WriteLine("Enter the Name to Update:");
         string name = Console.ReadLine();
 
-        List<double> grades = new List<double>();
+        List<decimal> grades = new List<decimal>();
 
         Console.WriteLine("Enter Update Grade Grades:");
 
         Console.Write("Quiz1(10): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Quiz2(10): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Quiz3(10): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Long Quiz1(20): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Long Quiz2(30): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Project(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Performance(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Midterm(50): ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         Console.Write("Finals:(50) ");
-        grades.Add(Convert.ToDouble(Console.ReadLine()));
+        grades.Add(Convert.ToDecimal(Console.ReadLine()));
 
         StudentGrade newData = new StudentGrade()
         {

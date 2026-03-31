@@ -6,34 +6,34 @@ namespace GradeCalculationBusinessDataLogic
     public class GradeService
 
     {
-        public GradeCalculationIni data;  // This will be JSON for storage
-        public GradeTotals constants = new GradeTotals();  // This is for calculation constants only
+        public GradeCalculationIni data;
+        public GradeTotals constants = new GradeTotals();
         public StudentGrade listing = new StudentGrade();
-        
+        //GradeCalculationInitiator gradeiniator = new GradeCalculationInitiator(new GradeDataBase);
 
-        public double FinalQuiz1, FinalQuiz2, FinalQuiz3, PercentQuiz1, PercentQuiz2, PercentQuiz3;
-        public double FinalLongQuiz1, FinalLongQuiz2, PercentLongQuiz1, PercentLongQuiz2;
-        public double FinalProject, FinalPerform, FinalMid, FinalFinals, PercentProject, PercentPerform, PercentMid, PercentFinals;
-        public double TotalGrade;
+        public decimal FinalQuiz1, FinalQuiz2, FinalQuiz3, PercentQuiz1, PercentQuiz2, PercentQuiz3;
+        public decimal FinalLongQuiz1, FinalLongQuiz2, PercentLongQuiz1, PercentLongQuiz2;
+        public decimal FinalProject, FinalPerform, FinalMid, FinalFinals, PercentProject, PercentPerform, PercentMid, PercentFinals;
+        public decimal TotalGrade;
         public GradeService(GradeCalculationIni repo)
         {
-            data = repo;  // This will be StudentJson for storage
+            data = repo; 
         }
         public class GradeTotals
         {
-            public double quizscore1 = 10;
-            public double quizscore2 = 10;
-            public double quizscore3 = 10;
-            public double lngquizscore1 = 20;
-            public double lngquizscore2 = 30;
-            public double project1 = 50;
-            public double perform1 = 50;
-            public double midterms1 = 50;
-            public double finals1 = 50;
-            public double totalscore = 280;
-            public double hundredpercent = 100;
+            public decimal quizscore1 = 10m;
+            public decimal quizscore2 = 10m;
+            public decimal quizscore3 = 10m;
+            public decimal lngquizscore1 = 20m;
+            public decimal lngquizscore2 = 30m;
+            public decimal project1 = 50m;
+            public decimal perform1 = 50m;
+            public decimal midterms1 = 50m;
+            public decimal finals1 = 50m;
+            public decimal totalscore = 280m;
+            public decimal hundredpercent = 100m;
         }
-        public double ComputeGrade(StudentGrade grade)
+        public decimal ComputeGrade(StudentGrade grade)
         {
 
 
@@ -58,7 +58,7 @@ namespace GradeCalculationBusinessDataLogic
             FinalFinals = grade.Finals / constants.finals1;
             PercentFinals = FinalFinals * constants.hundredpercent;
 
-            double rawscore = (constants.quizscore1 * FinalQuiz1) + (constants.quizscore2 * FinalQuiz2) + (constants.quizscore3 * FinalQuiz3) + (constants.lngquizscore1 * FinalLongQuiz1) + (constants.lngquizscore2 * FinalLongQuiz2) + (constants.project1 * FinalProject) + (constants.perform1 * FinalPerform) + (constants.midterms1 * FinalMid) + (constants.finals1 * FinalFinals);
+            decimal rawscore = (constants.quizscore1 * FinalQuiz1) + (constants.quizscore2 * FinalQuiz2) + (constants.quizscore3 * FinalQuiz3) + (constants.lngquizscore1 * FinalLongQuiz1) + (constants.lngquizscore2 * FinalLongQuiz2) + (constants.project1 * FinalProject) + (constants.perform1 * FinalPerform) + (constants.midterms1 * FinalMid) + (constants.finals1 * FinalFinals);
 
             TotalGrade = (rawscore / constants.totalscore) * constants.hundredpercent;
 

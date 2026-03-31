@@ -2,17 +2,17 @@
 
 namespace GradeCalculationDataLogicLayer
 {
-    public class GradeDataService
+    public class GradeCalculationInitiator
     {
         private readonly GradeCalculationIni data;
 
-        public GradeDataService(GradeCalculationIni DATA)
+        public GradeCalculationInitiator(GradeCalculationIni DATA)
         {
             data = DATA;
         }
         public void Add(StudentGrade grade)
-        { 
-            data.Add(grade); 
+        {
+            data.Add(grade);
         }
         public List<StudentGrade> GetInfo()
         {
@@ -23,7 +23,7 @@ namespace GradeCalculationDataLogicLayer
             data.Update(grade);
         }
         public void Delete(string name)
-        {
+        {   
             data.Delete(name);
         }
     }
