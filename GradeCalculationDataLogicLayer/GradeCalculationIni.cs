@@ -3,7 +3,7 @@
 
 namespace GradeCalculationDataLogicLayer
 {
-    public interface IGradeDataService
+    public interface GradeCalculationIni
     {
         void Add(StudentGrade grade);
         List<StudentGrade> GetInfo();

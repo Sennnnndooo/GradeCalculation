@@ -4,7 +4,7 @@ using System.Linq;
 using System.IO;
 namespace GradeCalculationDataLogicLayer
 {
-    public class StudentJson : IGradeDataService
+    public class StudentJson : GradeCalculationIni
     {
         private List<StudentGrade> _grades = new List<StudentGrade>();
         private readonly string _filePath;

@@ -4,7 +4,6 @@
     {
         public string StudentName { get; set; } = string.Empty;
         public double Quiz1 { get; set; }
-
         public double Quiz2 { get; set; }
 
         public double Quiz3 { get; set; }

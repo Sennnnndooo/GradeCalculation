@@ -12,7 +12,7 @@ public class GradeComputation
 
 {
     static List<string> students = new List<string>();
-    static IGradeDataService repo = new StudentJson();
+    static GradeCalculationIni repo = new StudentJson();
     static GradeCalculationBusinessDataLogic.GradeService compute = new GradeCalculationBusinessDataLogic.GradeService(repo);
     public static void Main(string[] args)
     {
@@ -266,20 +266,21 @@ public class GradeComputation
     {
         var allStudents = compute.GetInfo();
 
-        Console.WriteLine("\n--- Students in JSON ---");
+        Console.WriteLine("\n--- Students (JSON Format) ---");
 
         if (allStudents.Count == 0)
         {
             Console.WriteLine("No students found.");
         }
         else
-        {
-            foreach (var s in allStudents)
+        {   
+            var json = JsonSerializer.Serialize(allStudents, new JsonSerializerOptions
             {
-                Console.WriteLine($"- {s.StudentName}");
-            }
+                WriteIndented = true  
+            });
+            Console.WriteLine(json);
         }
         Console.WriteLine("-------------------------\n");
     }
 
- }
+}

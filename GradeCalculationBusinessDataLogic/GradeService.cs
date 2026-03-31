@@ -1,23 +1,37 @@
 ﻿using GradeCalculationDataLogicLayer;
 using GradeCalculationDataModel;
-using System.Linq;
+using System.Linq;  
 namespace GradeCalculationBusinessDataLogic
 {
     public class GradeService
 
     {
-        public IGradeDataService data;  // This will be JSON for storage
-        public GradeRep constants = new GradeRep();  // This is for calculation constants only
+        public GradeCalculationIni data;  // This will be JSON for storage
+        public GradeTotals constants = new GradeTotals();  // This is for calculation constants only
         public StudentGrade listing = new StudentGrade();
+        
 
         public double FinalQuiz1, FinalQuiz2, FinalQuiz3, PercentQuiz1, PercentQuiz2, PercentQuiz3;
         public double FinalLongQuiz1, FinalLongQuiz2, PercentLongQuiz1, PercentLongQuiz2;
         public double FinalProject, FinalPerform, FinalMid, FinalFinals, PercentProject, PercentPerform, PercentMid, PercentFinals;
         public double TotalGrade;
-
-        public GradeService(IGradeDataService repo)
+        public GradeService(GradeCalculationIni repo)
         {
             data = repo;  // This will be StudentJson for storage
+        }
+        public class GradeTotals
+        {
+            public double quizscore1 = 10;
+            public double quizscore2 = 10;
+            public double quizscore3 = 10;
+            public double lngquizscore1 = 20;
+            public double lngquizscore2 = 30;
+            public double project1 = 50;
+            public double perform1 = 50;
+            public double midterms1 = 50;
+            public double finals1 = 50;
+            public double totalscore = 280;
+            public double hundredpercent = 100;
         }
         public double ComputeGrade(StudentGrade grade)
         {
