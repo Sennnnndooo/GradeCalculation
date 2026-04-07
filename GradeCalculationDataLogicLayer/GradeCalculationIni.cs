@@ -1,5 +1,4 @@
 ﻿using GradeCalculationDataModel;
-using GradeCalculationDataLogicLayer;
 
 namespace GradeCalculationDataLogicLayer
 {

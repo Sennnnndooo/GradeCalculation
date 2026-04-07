@@ -7,7 +7,7 @@ namespace GradeCalculationDataLogicLayer
     public class InMemory : GradeCalculationIni
     {
         public List<StudentGrade> grades = new List<StudentGrade>();
-       
+
         public void Add(StudentGrade grade)
         {
             grades.Add(grade);

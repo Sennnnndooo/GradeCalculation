@@ -3,12 +3,10 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
 
-
 namespace GradeCalculationDataLogicLayer
 {
     public class GradeDataBase : GradeCalculationIni
     {
-       
         private string connectionString = "Server=localhost\\SQLEXPRESS;Database=GRCalculation;Integrated Security=True;TrustServerCertificate=True;";
 
         public void Add(StudentGrade grade)
@@ -18,14 +16,15 @@ namespace GradeCalculationDataLogicLayer
                 string sql = @"INSERT INTO Grades 
                               (StudentName, Quiz1, Quiz2, Quiz3, LongQuiz1, LongQuiz2, 
                                Project, Perform, Mid, Finals, TotalGrade)
-                              VALUES (@name, @quiz1, @quiz1, @quiz1, @lngquiz1, @lngquiz2, @project, @perform, @mid, @final, @total)";
+                              VALUES (@name, @quiz1, @quiz2, @quiz3, @lngquiz1, @lngquiz2, 
+                                      @project, @perform, @mid, @final, @total)";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@NAME", grade.StudentName);
+                    cmd.Parameters.AddWithValue("@name", grade.StudentName);
                     cmd.Parameters.AddWithValue("@quiz1", grade.Quiz1);
                     cmd.Parameters.AddWithValue("@quiz2", grade.Quiz2);
-                    cmd.Parameters.AddWithValue("@quiz3", grade.Quiz3); 
+                    cmd.Parameters.AddWithValue("@quiz3", grade.Quiz3);
                     cmd.Parameters.AddWithValue("@lngquiz1", grade.LongQuiz1);
                     cmd.Parameters.AddWithValue("@lngquiz2", grade.LongQuiz2);
                     cmd.Parameters.AddWithValue("@project", grade.Project);
@@ -78,57 +77,6 @@ namespace GradeCalculationDataLogicLayer
             return grades;
         }
 
-        public void Delete(StudentGrade grade)
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string sql = "DELETE FROM Grades WHERE StudentName = @name";
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@name", grade.StudentName);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public StudentGrade FindByName(string name)
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string sql = "SELECT StudentName, Quiz1, Quiz2, Quiz3, LongQuiz1, LongQuiz2, Project, Perform, Mid, Finals, TotalGrade FROM Grades WHERE StudentName = @name";
-
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@name", name);
-                    conn.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            return new StudentGrade
-                            {
-                                StudentName = reader["StudentName"].ToString(),
-                                Quiz1 = Convert.ToDecimal(reader["Quiz1"]),
-                                Quiz2 = Convert.ToDecimal(reader["Quiz2"]),
-                                Quiz3 = Convert.ToDecimal(reader["Quiz3"]),
-                                LongQuiz1 = Convert.ToDecimal(reader["LongQuiz1"]),
-                                LongQuiz2 = Convert.ToDecimal(reader["LongQuiz2"]),
-                                Project = Convert.ToDecimal(reader["Project"]),
-                                Perform = Convert.ToDecimal(reader["Perform"]),
-                                Mid = Convert.ToDecimal(reader["Mid"]),
-                                Finals = Convert.ToDecimal(reader["Finals"]),
-                                TotalGrade = Convert.ToDecimal(reader["TotalGrade"])
-                            };
-                        }
-                    }
-                }
-            }
-
-
-            return null;
-        }
         public void Update(StudentGrade grade)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -165,7 +113,8 @@ namespace GradeCalculationDataLogicLayer
                 }
             }
         }
-        public void Delete(string name)  // ← Changed from 'deleting(StudentGrade grade)'
+
+        public void Delete(string name)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -178,7 +127,5 @@ namespace GradeCalculationDataLogicLayer
                 }
             }
         }
-
-
     }
 }
