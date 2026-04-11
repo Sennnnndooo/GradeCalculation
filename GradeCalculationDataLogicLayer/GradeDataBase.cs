@@ -7,8 +7,8 @@ namespace GradeCalculationDataLogicLayer
 {
     public class GradeDataBase : GradeCalculationIni
     {
-        private string connectionString = "Server=localhost\\SQLEXPRESS;Database=GRCalculation;Integrated Security=True;TrustServerCertificate=True;";
-
+        private string connectionString = "Server=localhost\\SQLEXPRESS01;Database=GRCalculation;Integrated Security=True;TrustServerCertificate=True;Encrypt=False;";
+      
         public void Add(StudentGrade grade)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

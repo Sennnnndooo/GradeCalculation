@@ -228,21 +228,20 @@ public class GradeComputation
 
     static void ShowAllStudents()
     {
-        var allStudents = compute.GetInfo();
+        var allStudents = compute.GetInfo(); 
 
-        Console.WriteLine("\n--- Students (JSON Format) ---");
+        Console.WriteLine("\n--- Students from Database ---");
 
         if (allStudents.Count == 0)
         {
-            Console.WriteLine("No students found.");
+            Console.WriteLine("No students found in database.");
         }
         else
         {
-            var json = JsonSerializer.Serialize(allStudents, new JsonSerializerOptions
+            foreach (var student in allStudents)
             {
-                WriteIndented = true
-            });
-            Console.WriteLine(json);
+                Console.WriteLine($"{student.StudentName} - Total Grade: {student.TotalGrade}");
+            }
         }
         Console.WriteLine("-------------------------\n");
     }
