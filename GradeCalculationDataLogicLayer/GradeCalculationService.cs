@@ -26,7 +26,7 @@ namespace GradeCalculationDataLogicLayer
 
         public StudentGrade? GetByName(string name)
         {
-            return DataService.GetInfo().FirstOrDefault(s => s.StudentName == name);
+            return DataService.GetInfo().FirstOrDefault(s => s.StudentID == name);
         }
 
         public void Update(StudentGrade grade)

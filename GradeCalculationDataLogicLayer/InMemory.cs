@@ -20,7 +20,7 @@ namespace GradeCalculationDataLogicLayer
 
         public void Delete(string name)
         {
-            var student = grades.FirstOrDefault(s => s.StudentName == name);
+            var student = grades.FirstOrDefault(s => s.StudentID == name);
             if (student != null)
             {
                 grades.Remove(student);
@@ -29,7 +29,7 @@ namespace GradeCalculationDataLogicLayer
 
         public void Update(StudentGrade grade)
         {
-            var existing = grades.FirstOrDefault(s => s.StudentName == grade.StudentName);
+            var existing = grades.FirstOrDefault(s => s.StudentID == grade.StudentID);
 
             if (existing != null)
             {

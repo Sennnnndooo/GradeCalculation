@@ -6,17 +6,14 @@ using System.Text.Json;
 
 public class GradeComputation
 {
-    
-    public static GradeService compute = new GradeService();
 
-
-
-    static void UI1()
+   public static GradeService compute = new GradeService();
+   static void UI1()
     {
         Console.WriteLine("-------Grade Computation------");
         Console.WriteLine("-------------Grade------------");
         Console.WriteLine("-----------Calculator---------");
-        Console.WriteLine("1.INPUT GRADE");
+        Console.WriteLine("1.INPUT STUDENT INFO");
         Console.WriteLine("2.UPDATE / CHANGE GRADE");
         Console.WriteLine("3.REVIEW GRADE");
         Console.WriteLine("4.DELETE GRADE");
@@ -55,9 +52,9 @@ public class GradeComputation
 
     static void inputgrade()
     {
-        Console.WriteLine("Enter a Student Name:");
-        string name = Console.ReadLine();
-        var existing = compute.GetGrade(name);
+        Console.WriteLine("Enter a Student ID:");
+        string id_name = Console.ReadLine();
+        var existing = compute.GetGrade(id_name);
 
         if (existing != null)
         {
@@ -99,7 +96,7 @@ public class GradeComputation
 
         StudentGrade grade = new StudentGrade()
         {
-            StudentName = name,
+            StudentID = id_name,
             Quiz1 = grades[0],
             Quiz2 = grades[1],
             Quiz3 = grades[2],
@@ -117,9 +114,9 @@ public class GradeComputation
 
     static void reviewgrade()
     {
-        Console.WriteLine("Enter a Name to search:");
-        string name = Console.ReadLine().Trim();
-        var existingname = compute.GetGrade(name);
+        Console.WriteLine("Enter a Student ID to search:");
+        string id_name = Console.ReadLine().Trim();
+        var existingname = compute.GetGrade(id_name);
 
         if (existingname == null)
         {
@@ -129,8 +126,7 @@ public class GradeComputation
 
         decimal final = compute.ComputeGrade(existingname);
         existingname.TotalGrade = final;
-
-        Console.WriteLine($"Name: {existingname.StudentName}");
+        
         Console.WriteLine($"Quiz 1: {existingname.Quiz1}/10");
         Console.WriteLine($"Quiz 2: {existingname.Quiz2}/10");
         Console.WriteLine($"Quiz 3: {existingname.Quiz3}/10");
@@ -145,10 +141,10 @@ public class GradeComputation
 
     static void updategrade()
     {
-        Console.WriteLine("Enter the Name to Update:");
-        string name = Console.ReadLine();
+        Console.WriteLine("Enter the Student ID to Update:");
+        string id_name = Console.ReadLine();
 
-        var existing = compute.GetGrade(name);
+        var existing = compute.GetGrade(id_name);
 
         if (existing == null)
         {
@@ -189,7 +185,7 @@ public class GradeComputation
 
         StudentGrade newData = new StudentGrade()
         {
-            StudentName = name,
+            StudentID = id_name,
             Quiz1 = grades[0],
             Quiz2 = grades[1],
             Quiz3 = grades[2],
@@ -201,7 +197,7 @@ public class GradeComputation
             Finals = grades[8],
         };
 
-        if (compute.UpdateInfo(name, newData))
+        if (compute.UpdateInfo(id_name, newData))
         {
             Console.WriteLine("Updated successfully.");
         }
@@ -213,7 +209,7 @@ public class GradeComputation
 
     static void deletegrade()
     {
-        Console.WriteLine("Enter a Name To Delete Grades:");
+        Console.WriteLine("Enter a Student ID To Delete Grades:");
         string namesdel = Console.ReadLine();
 
         if (compute.Deleteinfo(namesdel))
@@ -240,7 +236,7 @@ public class GradeComputation
         {
             foreach (var student in allStudents)
             {
-                Console.WriteLine($"{student.StudentName} - Total Grade: {student.TotalGrade}");
+                Console.WriteLine($"{student.StudentID} - Total Grade: {student.TotalGrade}");
             }
         }
         Console.WriteLine("-------------------------\n");

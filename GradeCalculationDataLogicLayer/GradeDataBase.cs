@@ -14,14 +14,14 @@ namespace GradeCalculationDataLogicLayer
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string sql = @"INSERT INTO Grades 
-                              (StudentName, Quiz1, Quiz2, Quiz3, LongQuiz1, LongQuiz2, 
+                              (StudentID, Quiz1, Quiz2, Quiz3, LongQuiz1, LongQuiz2, 
                                Project, Perform, Mid, Finals, TotalGrade)
                               VALUES (@name, @quiz1, @quiz2, @quiz3, @lngquiz1, @lngquiz2, 
                                       @project, @perform, @mid, @final, @total)";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@name", grade.StudentName);
+                    cmd.Parameters.AddWithValue("@name", grade.StudentID);
                     cmd.Parameters.AddWithValue("@quiz1", grade.Quiz1);
                     cmd.Parameters.AddWithValue("@quiz2", grade.Quiz2);
                     cmd.Parameters.AddWithValue("@quiz3", grade.Quiz3);
@@ -45,7 +45,7 @@ namespace GradeCalculationDataLogicLayer
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "SELECT StudentName, Quiz1, Quiz2, Quiz3, LongQuiz1, LongQuiz2, Project, Perform, Mid, Finals, TotalGrade FROM Grades";
+                string sql = "SELECT StudentID, Quiz1, Quiz2, Quiz3, LongQuiz1, LongQuiz2, Project, Perform, Mid, Finals, TotalGrade FROM Grades";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -56,7 +56,7 @@ namespace GradeCalculationDataLogicLayer
                         {
                             StudentGrade grade = new StudentGrade
                             {
-                                StudentName = reader["StudentName"].ToString(),
+                                StudentID = reader["StudentID"].ToString(),
                                 Quiz1 = Convert.ToDecimal(reader["Quiz1"]),
                                 Quiz2 = Convert.ToDecimal(reader["Quiz2"]),
                                 Quiz3 = Convert.ToDecimal(reader["Quiz3"]),
@@ -96,7 +96,7 @@ namespace GradeCalculationDataLogicLayer
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@name", grade.StudentName);
+                    cmd.Parameters.AddWithValue("@name", grade.StudentID);
                     cmd.Parameters.AddWithValue("@quiz1", grade.Quiz1);
                     cmd.Parameters.AddWithValue("@quiz2", grade.Quiz2);
                     cmd.Parameters.AddWithValue("@quiz3", grade.Quiz3);

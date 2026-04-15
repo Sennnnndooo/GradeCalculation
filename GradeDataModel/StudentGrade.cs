@@ -2,7 +2,7 @@
 {
     public class StudentGrade
     {
-        public string StudentName { get; set; } = string.Empty;
+        public string StudentID { get; set; } = string.Empty;
         public decimal Quiz1 { get; set; }
         public decimal Quiz2 { get; set; }
 
