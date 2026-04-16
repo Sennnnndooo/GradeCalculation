@@ -1,5 +1,6 @@
 ﻿using GradeCalculationDataModel;
 using GradeCalculationBusinessDataLogic;
+using GradeCalculationDataLogicLayer;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -17,7 +18,7 @@ public class GradeComputation
         Console.WriteLine("2.UPDATE / CHANGE GRADE");
         Console.WriteLine("3.REVIEW GRADE");
         Console.WriteLine("4.DELETE GRADE");
-        Console.WriteLine("5.DISPLAY ALL STUDENTS (JSON OUTPUT)");
+        Console.WriteLine("5.DISPLAY ALL STUDENTS");
         Console.WriteLine("6.Exit");
 
         Console.WriteLine("Enter your Choice:");
@@ -224,22 +225,41 @@ public class GradeComputation
 
     static void ShowAllStudents()
     {
-        var allStudents = compute.GetInfo(); 
+        var allStudents = compute.GetInfo();
 
-        Console.WriteLine("\n--- Students from Database ---");
+        Console.WriteLine("\n--- Students from PUPSIS ---");
 
         if (allStudents.Count == 0)
         {
-            Console.WriteLine("No students found in database.");
+            Console.WriteLine("No students found in PUPSIS.");
         }
         else
         {
             foreach (var student in allStudents)
             {
-                Console.WriteLine($"{student.StudentID} - Total Grade: {student.TotalGrade}");
+                if (student.TotalGrade >= 96)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.00");
+                else if (student.TotalGrade >= 91)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.25");
+                else if (student.TotalGrade >= 86)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.50");
+                else if (student.TotalGrade >= 81)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.75");
+                else if (student.TotalGrade >= 76)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.00");
+                else if (student.TotalGrade >= 71)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.25");
+                else if (student.TotalGrade >= 66)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.50");
+                else if (student.TotalGrade >= 61)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.75");
+                else if (student.TotalGrade >= 60)
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 3.00");
+                else
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 5.00");
             }
         }
-        Console.WriteLine("-------------------------\n");
+       
     }
     public static void Main(string[] args)
     {

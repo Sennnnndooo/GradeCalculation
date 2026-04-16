@@ -92,7 +92,7 @@ namespace GradeCalculationDataLogicLayer
                               Mid = @mid, 
                               Finals = @final,
                               TotalGrade = @total
-                              WHERE StudentName = @name";
+                              WHERE StudentID = @name";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -118,7 +118,7 @@ namespace GradeCalculationDataLogicLayer
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "DELETE FROM Grades WHERE StudentName = @name";
+                string sql = "DELETE FROM Grades WHERE StudentID = @name";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@name", name);
