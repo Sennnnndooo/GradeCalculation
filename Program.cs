@@ -11,9 +11,11 @@ public class GradeComputation
    public static GradeService compute = new GradeService();
    static void UI1()
     {
-        Console.WriteLine("-------Grade Computation------");
-        Console.WriteLine("-------------Grade------------");
-        Console.WriteLine("-----------Calculator---------");
+        Console.WriteLine("------------------------------------------------");
+        Console.WriteLine("----------------|Grade Computation|-------------");
+        Console.WriteLine("------------------------------------------------");
+        Console.WriteLine("--------------------|PUPSIS|--------------------");
+        Console.WriteLine("------------------------------------------------");
         Console.WriteLine("1.INPUT STUDENT INFO");
         Console.WriteLine("2.UPDATE / CHANGE GRADE");
         Console.WriteLine("3.REVIEW GRADE");

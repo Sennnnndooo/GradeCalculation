@@ -101,11 +101,6 @@ namespace GradeCalculationBusinessDataLogic
             return true;
         }
 
-        public StudentGrade? GetGrade(string studentName)
-        {
-            return gradeDataService.GetByName(studentName);
-        }
-
         public List<StudentGrade> GetInfo()
         {
             return gradeDataService.GetInfo();
@@ -116,6 +111,10 @@ namespace GradeCalculationBusinessDataLogic
             decimal finalGrade = ComputeGrade(student);
             student.TotalGrade = finalGrade;
             gradeDataService.Add(student);
+        }
+        public StudentGrade? GetGrade(string studentName)
+        {
+            return gradeDataService.GetByName(studentName);
         }
     }
 }   
