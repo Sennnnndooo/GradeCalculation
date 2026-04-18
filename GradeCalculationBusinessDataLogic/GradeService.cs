@@ -7,7 +7,7 @@ namespace GradeCalculationBusinessDataLogic
     public class GradeService
     {
        
-        private GradeCalculationService gradeDataService = new GradeCalculationService(new GradeDataBase());
+        private GradeCalculationService gradeDataService = new GradeCalculationService(new StudentJson());
 
 
         public GradeTotals constants = new GradeTotals();

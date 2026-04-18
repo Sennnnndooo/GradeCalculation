@@ -240,25 +240,25 @@ public class GradeComputation
             foreach (var student in allStudents)
             {
                 if (student.TotalGrade >= 96)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.00");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 1.00");
                 else if (student.TotalGrade >= 91)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.25");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 1.25");
                 else if (student.TotalGrade >= 86)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.50");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 1.50");
                 else if (student.TotalGrade >= 81)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 1.75");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 1.75");
                 else if (student.TotalGrade >= 76)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.00");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 2.00");
                 else if (student.TotalGrade >= 71)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.25");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 2.25");
                 else if (student.TotalGrade >= 66)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.50");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 2.50");
                 else if (student.TotalGrade >= 61)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 2.75");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 2.75");
                 else if (student.TotalGrade >= 60)
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 3.00");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 3.00");
                 else
-                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade}% = 5.00");
+                    Console.WriteLine($"{student.StudentID} | {student.TotalGrade:F2}% = 5.00");
             }
         }
        
