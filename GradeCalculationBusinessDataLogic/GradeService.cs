@@ -1,4 +1,5 @@
-﻿using GradeCalculationDataLogicLayer;
+﻿
+using GradeCalculationDataLogicLayer;
 using GradeCalculationDataModel;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace GradeCalculationBusinessDataLogic
 {
     public class GradeService
     {
-       
+
         private GradeCalculationService gradeDataService = new GradeCalculationService(new GradeDataBase());
 
 
@@ -84,6 +85,9 @@ namespace GradeCalculationBusinessDataLogic
             student.Mid = newData.Mid;
             student.Finals = newData.Finals;
 
+         
+            student.TotalGrade = ComputeGrade(student);
+
             gradeDataService.Update(student);
             return true;
         }
@@ -117,4 +121,4 @@ namespace GradeCalculationBusinessDataLogic
             return gradeDataService.GetByName(studentName);
         }
     }
-}   
+}
